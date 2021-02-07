@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './ui/custom_text_input.dart';
+import '../shared/custom_text_input.dart';
 
 class NewTransaction extends StatelessWidget {
   final titleController = TextEditingController();

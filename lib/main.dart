@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './components/chart.dart';
-import './components/transaction_container.dart';
-import './components/new_transaction.dart';
+import './components/user_transaction.dart';
 
 void main() => runApp(PersonalExpenses());
 
@@ -26,8 +25,7 @@ class PersonalExpensesHomePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Chart(),
-          NewTransaction(),
-          TransactionContainer(),
+          UserTransaction(),
         ],
       ),
     );
