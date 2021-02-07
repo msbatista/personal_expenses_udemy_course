@@ -6,9 +6,10 @@ class Transaction {
   final double amount;
   final DateTime transactionDate;
 
-  Transaction(
-      {@required this.id,
-      @required this.title,
-      @required this.amount,
-      @required this.transactionDate});
+  Transaction({
+    @required this.id,
+    @required this.title,
+    @required this.amount,
+    @required this.transactionDate,
+  });
 }
