@@ -11,7 +11,28 @@ class PersonalExpenses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Personal Expenses App',
+      title: 'Personal Expenses',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amber,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        ),
+      ),
       home: PersonalExpensesHomePage(),
     );
   }
@@ -56,7 +77,9 @@ class _PersonalExpensesHomePageState extends State<PersonalExpensesHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Personal Expenses'),
+        title: Text(
+          'Personal Expenses',
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
@@ -82,22 +105,22 @@ class _PersonalExpensesHomePageState extends State<PersonalExpensesHomePage> {
 }
 
 List<Transaction> _getTransactions() => [
-      Transaction(
-        id: 't1',
-        title: 'New Shoes',
-        amount: 69.99,
-        transactionDate: DateTime.now(),
-      ),
-      Transaction(
-        id: 't2',
-        title: 'New Fan',
-        amount: 100.50,
-        transactionDate: DateTime.now(),
-      ),
-      Transaction(
-        id: 't2',
-        title: 'New Book',
-        amount: 25.50,
-        transactionDate: DateTime.now(),
-      ),
+      // Transaction(
+      //   id: 't1',
+      //   title: 'New Shoes',
+      //   amount: 69.99,
+      //   transactionDate: DateTime.now(),
+      // ),
+      // Transaction(
+      //   id: 't2',
+      //   title: 'New Fan',
+      //   amount: 100.50,
+      //   transactionDate: DateTime.now(),
+      // ),
+      // Transaction(
+      //   id: 't2',
+      //   title: 'New Book',
+      //   amount: 25.50,
+      //   transactionDate: DateTime.now(),
+      // ),
     ];
