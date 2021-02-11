@@ -45,7 +45,19 @@ class PersonalExpensesHomePage extends StatefulWidget {
 }
 
 class _PersonalExpensesHomePageState extends State<PersonalExpensesHomePage> {
-  final _transactions = _getTransactions();
+  final List<Transaction> _transactions = [];
+
+  List<Transaction> get _recentTransactions {
+    return _transactions.where(
+      (transaction) {
+        return transaction.transactionDate.isAfter(
+          DateTime.now().subtract(
+            Duration(days: 7),
+          ),
+        );
+      },
+    ).toList();
+  }
 
   void _addNewTransaction(String title, double amount) {
     final newTransaction = Transaction(
@@ -90,7 +102,7 @@ class _PersonalExpensesHomePageState extends State<PersonalExpensesHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Chart(),
+            Chart(_recentTransactions),
             TransactionContainer(transactions: this._transactions),
           ],
         ),
@@ -103,24 +115,3 @@ class _PersonalExpensesHomePageState extends State<PersonalExpensesHomePage> {
     );
   }
 }
-
-List<Transaction> _getTransactions() => [
-      // Transaction(
-      //   id: 't1',
-      //   title: 'New Shoes',
-      //   amount: 69.99,
-      //   transactionDate: DateTime.now(),
-      // ),
-      // Transaction(
-      //   id: 't2',
-      //   title: 'New Fan',
-      //   amount: 100.50,
-      //   transactionDate: DateTime.now(),
-      // ),
-      // Transaction(
-      //   id: 't2',
-      //   title: 'New Book',
-      //   amount: 25.50,
-      //   transactionDate: DateTime.now(),
-      // ),
-    ];
