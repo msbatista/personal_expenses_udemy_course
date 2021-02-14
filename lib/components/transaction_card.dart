@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/model/transaction.dart';
-import '../utils/datetime/date_utils.dart' as dateUtils;
+import 'package:intl/intl.dart';
 
 class TransactionCard extends StatelessWidget {
   final Transaction transaction;
@@ -12,55 +12,28 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Row(
-        children: <Widget>[
-          Container(
-            width: 100,
-            margin: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 15,
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Theme.of(context).primaryColor,
-                width: 2,
+      elevation: 5,
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+      child: ListTile(
+          leading: CircleAvatar(
+            radius: 30,
+            child: Padding(
+              padding: EdgeInsets.all(6),
+              child: FittedBox(
+                child: Text('\$${transaction.amount}'),
               ),
             ),
-            child: Text(
-              '\$${transaction.amount.toStringAsFixed(2)}',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Theme.of(context).primaryColor,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            padding: const EdgeInsets.all(10),
           ),
-          Spacer(),
-          Container(
-            margin: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 15,
-            ),
-            child: Column(
-              children: [
-                Text(
-                  transaction.title,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                Text(
-                  dateUtils.dateFormat(transaction.transactionDate),
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
-                )
-              ],
-              crossAxisAlignment: CrossAxisAlignment.end,
-            ),
-          )
-        ],
-      ),
+          title: Text(
+            transaction.title,
+            style: Theme.of(context).textTheme.headline6,
+          ),
+          subtitle: Text(
+            DateFormat.yMMMd().format(transaction.transactionDate),
+          ),
+          trailing: Icon(
+            Icons.edit,
+          )),
     );
   }
 }
