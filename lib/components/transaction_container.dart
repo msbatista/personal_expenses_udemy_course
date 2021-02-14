@@ -4,15 +4,17 @@ import './transaction_card.dart';
 
 class TransactionContainer extends StatelessWidget {
   final List<Transaction> transactions;
+  final Function onDelete;
 
   TransactionContainer({
     @required this.transactions,
+    @required this.onDelete,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 295,
+      height: 450,
       child: transactions.isEmpty
           ? Column(
               children: <Widget>[
@@ -35,8 +37,7 @@ class TransactionContainer extends StatelessWidget {
           : ListView.builder(
               itemBuilder: (context, index) {
                 return TransactionCard(
-                  transaction: transactions[index],
-                );
+                    transaction: transactions[index], onDelete: this.onDelete);
               },
               itemCount: transactions.length,
             ),

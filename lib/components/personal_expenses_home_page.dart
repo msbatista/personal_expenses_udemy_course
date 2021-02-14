@@ -45,7 +45,9 @@ class _PersonalExpensesHomePageState extends State<PersonalExpensesHomePage> {
         child: Column(
           children: <Widget>[
             Chart(_recentTransactions),
-            TransactionContainer(transactions: this._transactions),
+            TransactionContainer(
+                transactions: this._transactions,
+                onDelete: this._deleteTransaction),
           ],
         ),
       ),
@@ -57,8 +59,17 @@ class _PersonalExpensesHomePageState extends State<PersonalExpensesHomePage> {
     );
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((item) => item.id == id);
+    });
+  }
+
   void _addNewTransaction(
-      String title, double amount, DateTime transactionDate) {
+    String title,
+    double amount,
+    DateTime transactionDate,
+  ) {
     final newTransaction = Transaction(
       title: title,
       amount: amount,

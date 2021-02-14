@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../shared/custom_text_input.dart';
-import '../shared/custom_numeric_input.dart';
 import 'package:intl/intl.dart';
+
+import '../shared/custom_numeric_input.dart';
+import '../shared/custom_text_input.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addNewTransaction;
